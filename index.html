@@ -1,0 +1,106 @@
+<!--Esta clase contiene el formulario de login, toma los datos del usuario y lo manda a la clase registro.php-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../imagenes/logo/logo.jpg">
+    <link rel="stylesheet" href="../css/login3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papeleria Pop</title>
+   </head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+
+    <div class="cover">
+      <div class="front">
+        <img src="../imagenes/login/frontImg.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Donde la calidad es<br> dificil de copiar!!</span>
+          <span class="text-2">Papeleria Pop</span>
+        </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="../imagenes/login/frontImg.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Iniciar Sesión</div>
+            
+            <script src='//www.google.com/recaptcha/api.js'></script>
+          <form action="registro.php" method="post">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" name= "usuario" placeholder="Usuario" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="contraseña" placeholder="Contraseña" required>
+              </div>
+              <form id="form" action="<?php $_SERVER['PHP_SELF']; ?>" method= "POST"></form>
+              <div class="g-recaptcha" data-sitekey="6Lck0gwjAAAAADS4LpQf91VmNQcgHZtOIAXVOUx7" ></div>
+              <div class="button input-box">   
+              <br>
+              <input type="submit" name="Ingresar" value="Ingresar">
+              
+          </form>
+             
+              </div>
+              <div class="text sign-up-text">¿Aun no tienes cuenta? <label for="flip">Registrate</label></div>
+            </div>
+        </form>
+      </div>
+      <div class="signup-form">
+        <div class="title">Registrarse</div>
+      <form action="new_usuario.php" method="post">
+          <div class="input-boxes">
+            <div class="input-box">
+              <i class="fas fa-address-card"></i>
+              <input type="text" name= "nombre" placeholder="Nombre Completo" required>
+            </div>
+            <div class="input-box">
+              <i class="fas fa-user"></i>
+              <input type="text" name= "usuario" placeholder="Usuario" required>
+            </div>
+            <div class="input-box">
+              <i class="fas fa-envelope"></i>
+              <input type="text" name= "email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+              <i class="fas fa-users-cog"></i>
+              <select name="tipo">
+                <option value="1">Administrador</option>
+                <option value="2">Trabajador</option>
+              </select>
+            </div>
+            <div class="button input-box">
+              <input type="submit" name="Ingresar" value="Enviar">
+            </div>
+            <div class="text sign-up-text">¿Ya tienes cuenta? <label for="flip">Inicia Sesión</label></div>
+          </div>
+    </form>
+    </div>
+  </div>
+  
+</body>
+
+<script>
+window.onload = function() {
+    var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+    if($recaptcha) {
+        $recaptcha.setAttribute("required", "required");
+    }
+};
+  </script>
+</html>
