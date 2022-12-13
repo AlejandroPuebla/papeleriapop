@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../imagenes/logo/logo.jpg">
+    <link rel="stylesheet" href="../../css/tabla5.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="peticion.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Papeleria Pop</title> 
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="../../imagenes/logo/logo.jpg" alt="">
+            </div>
+
+            <span class="logo_name">Papeleria Pop</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="../gestion_usuarios/gestion_usuarios.html">
+                    <i class="uil uil-user"></i>
+                    <span class="link-name">Gestionar Usuarios</span>
+                </a></li>
+                <li><a href="../historial/historial.html">
+                    <i class="uil uil-file-check"></i>
+                    <span class="link-name">Historial De Ventas</span>
+                </a></li>
+                <li><a href="../corte_dia/corte.html">
+                    <i class="uil uil-history"></i>
+                    <span class="link-name">Corte Del Dia</span>
+                </a></li>
+                <li><a href="corte.html">
+                    <i class="uil uil-calender"></i>
+                    <span class="link-name">Corte Del Mes</span>
+                </a></li>
+                <li><a href="../productos_mas_vendidos/reporte.html">
+                    <i class="uil uil-shopping-bag"></i>
+                    <span class="link-name">Productos Mas Vendidos</span>
+                </a></li>
+                <li><a href="../descuentos/descuentos.html">
+                    <i class="uil uil-pricetag-alt"></i>
+                    <span class="link-name">Reporte De Descuentos</span>
+                </a></li>
+            </ul>
+
+            
+            
+            <ul class="logout-mode">
+                <li><a href="../../login/formulario.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Cerrar Sesion</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Modo Oscuro</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+            <div class="top">
+                <i class="uil uil-bars sidebar-toggle"></i>
+
+                <div class="search-box">
+                    <i class="uil uil-search"></i>
+                    <input type="month" id="busqueda" name="busqueda" placeholder="Buscar aqui...">
+                </div>
+                
+                <img src="images/blanco.png" alt="">
+            </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-calender"></i>
+                    <span class="text">Corte Del Mes</span>
+                </div>
+
+                
+                <div class="boxes">
+                    
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="title">
+                </div>
+
+                
+                <div class="activity-data">
+                    <section id="tabla_resultado" >
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>

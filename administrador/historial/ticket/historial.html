@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../imagenes/logo/logo.jpg">
+    <link rel="stylesheet" href="../../../css/tabla4.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="peticion.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Papeleria Pop</title> 
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="../../imagenes/logo/logo.jpg" alt="">
+            </div>
+
+            <span class="logo_name">Papeleria Pop</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="../gestion_usuarios/gestion_usuarios.html">
+                    <i class="uil uil-user"></i>
+                    <span class="link-name">Gestionar Usuarios</span>
+                </a></li>
+                <li><a href="../inventario/inventario.html">
+                    <i class="uil uil-box"></i>
+                    <span class="link-name">Inventario</span>
+                </a></li>
+                <li><a href="../punto_de_venta/punto_venta.html">
+                    <i class="uil uil-shop"></i>
+                    <span class="link-name">Punto De Venta</span>
+                </a></li>
+                <li><a href="../carrito/carrito.php">
+                    <i class="uil uil-shopping-cart-alt"></i>
+                    <span class="link-name">Carrito</span>
+                </a></li>
+                <li><a href="historial.html">
+                    <i class="uil uil-file-check"></i>
+                    <span class="link-name">Historial De Ventas</span>
+                </a></li>
+                <li><a href="../corte_dia/corte.html">
+                    <i class="uil uil-history"></i>
+                    <span class="link-name">Corte Del Dia</span>
+                </a></li>
+                <li><a href="../corte_mes/corte.html">
+                    <i class="uil uil-calender"></i>
+                    <span class="link-name">Corte Del Mes</span>
+                </a></li>
+                <li><a href="../productos_mas_vendidos/reporte.html">
+                    <i class="uil uil-shopping-bag"></i>
+                    <span class="link-name">Productos Mas Vendidos</span>
+                </a></li>
+            </ul>
+
+            
+            
+            <ul class="logout-mode">
+                <li><a href="../../login/formulario.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Cerrar Sesion</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Modo Oscuro</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+            <div class="top">
+                <i class="uil uil-bars sidebar-toggle"></i>
+
+                <div class="search-box">
+                    <i class="uil uil-search"></i>
+                    <input type="date" id="busqueda" name="busqueda" placeholder="Buscar aqui...">
+                </div>
+                
+                <img src="images/blanco.png" alt="">
+            </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                
+                <div class="title">
+                    <i class="uil uil-file-check"></i>
+                    <span class="text">Historial De Ventas</span>
+                </div>
+
+                
+                <div class="boxes">
+                    
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="title">
+                </div>
+
+                
+                <div class="activity-data">
+                    <?php
+                    error_reporting(0);
+                    session_start();
+                    $total=0;
+    
+    
+                            if (isset($_SESSION["carrito"])) {
+                                
+                    $tabla="";
+                    $tabla.= 
+                        '<table class="table" class="table-data>
+                            <tr class="data names">
+                                    <th class="data-title">Id</th>
+                                <th class="data-title">Nombre</th>
+                                <th class="data-title">Marca</th>
+                                <th class="data-title">Descripcion</th>
+                                <th class="data-title">Cantidad</th>
+                                <th class="data-title">P/U</th>
+                                <th class="data-title">Imagen</th>
+                                <th class="data-title">Acciones</th>
+                            </tr>';
+    
+                            echo $tabla;
+    
+                                foreach ($_SESSION["carrito"] as $indice => $arreglo) {
+                                  $total += $arreglo["precio_uni"] * $arreglo["cantidad"];
+                            echo "<tr>";
+                              foreach ($arreglo as $key => $value) {
+                            
+                                echo "<td>";
+                                echo $value;
+                                echo "</td>";
+                              }
+                            echo "<td>";
+                                  echo "<button type='submit' class='seguir' name='eliminar' id='eliminar' value='$indice'><a href='carrito.php?eliminar=$indice'>Eliminar</a></button>
+                                  ";
+                                  echo "</td>";
+                            
+                            
+                                }
+                                echo "</tr><tr>";
+                                echo "<td><button type='submit' class='seguir' name='eliminar' id='eliminar' value='$indice'><a href='carrito.php?vaciar=true'>Vaciar Carrito</a></button></td>";
+                                echo "<td></td>";
+                                echo "<td></td>";
+                                echo "<td></td>";
+                                echo "<td></td>";
+                                echo "<td>";
+                                echo "Total";
+                                echo "</td>";
+                                echo "<td>";
+                                echo $total;
+                                echo "</td>";
+                                echo '<td><form action="pagar/pagar.php" method="post"><input type="number" name="cantidad" id="cantidad" placeholder="Dinero recibido" min="'.$total.'" required>';
+                                echo "<button type='submit' class='seguir' name='pagar' id='pagar' value='$total'>Pagar</button></form></td>";
+                              }else {
+                                echo "<script>alert('El carrito esta vacio');</script>";
+                                echo "<meta http-equiv='refresh' content='0;url=../punto_de_venta/punto_venta.html' />";
+                              }
+    
+    
+                              echo "</table>";
+                              echo "</div>";
+                            
+                              if (isset($_REQUEST["vaciar"])) {
+                                session_destroy();
+                                echo "<meta http-equiv='refresh' content='0;url=carrito.php' />";
+                              }
+                              if (isset($_REQUEST["eliminar"])) {
+                                $producto = $_REQUEST["eliminar"];
+                                unset($_SESSION["carrito"][$producto]);
+                                echo "<script>alert('Se ha eliminado el producto: $producto');</script>";
+                                echo "<meta http-equiv='refresh' content='0;url=carrito.php' />";
+                              }
+                            echo "</form>";
+    
+    
+                    ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>
